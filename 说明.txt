@@ -1,0 +1,27 @@
+
+外网服务器创建表
+
+DROP TABLE IF EXISTS `table_change_log`;
+CREATE TABLE `table_change_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `table_name` varchar(20) NOT NULL DEFAULT '' COMMENT '表名',
+  `table_op` varchar(20) NOT NULL DEFAULT '' COMMENT '操作',
+  `table_id` int(11) NOT NULL DEFAULT '0' COMMENT '表ID',
+  `add_time` datetime NOT NULL COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='表操作记录';
+
+
+DROP TABLE IF EXISTS `sys_config`;
+CREATE TABLE `sys_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL DEFAULT '' COMMENT '名称',
+  `value` varchar(255) NOT NULL DEFAULT '' COMMENT '值',
+  `add_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='系统参数';
+
+将整个目录放在外网服务器上。
+
+本地服务器只需要 sync.php 即可。
